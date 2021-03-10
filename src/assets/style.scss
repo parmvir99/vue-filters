@@ -1,0 +1,233 @@
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+body {
+  margin:0;
+  font-size:15px;
+  font-family: spartan !important;
+}
+
+.container {
+  width:90%;
+  padding: 5em 2em;
+  margin: 0 auto;
+  position:relative;
+}
+
+// Displays
+.d-flex {
+  display:flex;
+}
+.align-items-center {
+  align-items:center;
+}
+.justify-space-between {
+  justify-content: space-between;
+}
+.inline-flex {
+  display:inline-flex;
+}
+
+// Background colors
+.primary-bg {
+  background: hsl(180, 29%, 50%);
+}
+.light-cyan-bg {
+  background: hsl(180, 52%, 96%);
+}
+.dark-bg {
+  background:#000;
+}
+
+// Font colors
+.primary-font {
+  color:  hsl(180, 29%, 50%);
+}
+.light-cyan-font {
+  color:  hsl(180, 8%, 52%);
+}
+
+// Sizing
+.w-100 {
+  width:100%;
+}
+
+// Spacing
+// i had to google the syntax but i have been using this in my previous projects
+@each $abbr, $name in ("t": "top", "r": "right", "b": "bottom", "l": "left") {
+  @for $i from 0 through 20 {
+    .m#{$abbr}-#{$i} {
+        margin-#{$name}: 1rem * $i !important;
+    }
+    .p#{$abbr}-#{$i} {
+        padding-#{$name}: 1rem * $i !important;
+    }
+  }
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.banner-image {
+  width:100%;
+}
+
+.card {
+  padding:2em;
+  border-radius:4px;
+  background:#fff;
+  box-shadow:0px 11px 17px 3px #00000012;
+  margin-bottom:2em;
+  &.featured {
+    border-left:4px solid  hsl(180, 29%, 50%);
+  }
+}
+
+.logo-img {
+  margin-right:20px;
+}
+
+.badge-rounded-20 {
+  border-radius:20px;
+  padding: 7px 10px 4px 10px;
+  color:#fff;
+  font-size:11px;
+}
+.badge-rounded-4 {
+  border-radius:4px;
+  padding: 7px 10px 6px 10px;
+  font-size: 12px;
+  color:hsl(180, 29%, 50%);
+  font-weight:bold;
+  cursor: pointer;
+}
+
+.badge-rounded-4:not(.filter-card .badge-rounded-4):hover {
+  background: hsl(180, 29%, 50%);
+  color:#fff;
+}
+
+.filter-card {
+  position:absolute;
+  top:-60px;
+  right:0;
+  left:0;
+  margin:0 2em;
+  .badge-rounded-4 {
+    border-radius:4px 0px 0px 4px;
+  }
+  .filter-remove {
+    background: hsl(180, 29%, 50%);
+    color:#fff;
+    padding: 4px 5px 2px 5px;
+    border-radius:0px 4px 4px 0px;
+    font-size:19px;
+    cursor: pointer;
+    &:hover {
+      background:#000;
+      color:#fff;
+    }
+  }
+  .clear-filters {
+    color:hsl(180, 29%, 50%);
+    text-decoration:none;
+    cursor: pointer;
+    margin-left:auto;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+.other-infos span {
+  position:relative;
+  font-size:13px;
+}
+.other-infos span + span:before {
+  content: '•';
+  position:absolute;
+  font-size:20px;
+  left: -26px;
+  top: -4px;
+}
+
+.haveFilter {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+@media only screen  and (max-width: 1024px) {
+  .card {
+    display:block !important;
+    position:relative;
+    margin-bottom:4em;
+  }
+  .filter-card {
+    position:absolute !important;
+    top:-80px;
+    display:flex !important;;
+  }
+  .title {
+    display:inline-block;
+  }
+
+  .top-banner  {
+      overflow:hidden;
+    img {
+      width: auto !important;
+    }
+  }
+  .badge-rounded-4 {
+    margin-bottom:10px;
+    display:inline-block;
+  }
+
+  .filters {
+    border-top: 1px solid hsl(180, 8%, 52%);
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+
+}
+@media only screen  and (max-width: 570px) {
+  .container {
+    width:100%;
+    padding:4em 1em 3em 1em;
+  }
+  .card {
+    padding:2em 1em;
+  }
+
+  .filter-card {
+    position:relative !important;
+    margin: 0px;
+    top:-80px;
+    display:flex !important;;
+  }
+
+  .logo-img {
+    position: absolute;
+    top: -29px;
+    width: 50px;
+  }
+
+}
